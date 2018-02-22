@@ -1,0 +1,44 @@
+# Swift-subscript-pracrtice
+
+class Week{
+    var dayArray = ["Mon", "Thu", "Wed", "Thr", "Fri", "Sat", "Sun"]
+    subscript (index:Int) -> String{
+        get {
+            return dayArray[index]
+        }
+    }
+}
+var day = Week()
+print(day[5])
+
+var queue = ["apple":1, "banana":2, "cat":3]
+queue["dog"] = 4
+queue.sorted(by: >)
+
+enum _math{
+    case add, sub, mul, div
+}
+
+class Computer{
+    var result = 0
+    func calculation(Num1 a:Int, Num2 b:Int, method:_math ) -> Int {
+        switch method {
+        case .add:
+            result = a + b
+        case .sub:
+            result = a - b
+        case .mul:
+            result = a * b
+        case .div:
+            result = a / b
+        }
+        return result
+    }
+        subscript (Num1 a:Int, Num2 b:Int, method:_math ) -> Int {
+            result = calculation(Num1: a, Num2: b, method:method)
+            return result
+        }
+    }
+    
+let mathMethod = Computer()
+print("2 * 10 結果為 \(mathMethod[Num1: 2, Num2: 10, _math.mul])")
